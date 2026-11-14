@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LNCT Bhopal — Sign in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<div class="hexbg" aria-hidden="true"></div>
+
+<main class="wrap">
+  <div class="card">
+    <span class="logo-box">
+      <img class="logo" src="Logo-Lnct.svg" alt="LNCT Group logo">
+    </span>
+    <h1>Alumni Directory</h1>
+    <p class="sub">Let us know who's visiting before you go in.</p>
+
+    <form id="gateForm" novalidate>
+      <fieldset class="options">
+        <legend class="sr-only">Choose visitor type</legend>
+
+        <label class="opt" for="visitor-insider">
+          <input type="radio" name="visitor" id="visitor-insider" value="insider" required>
+          <span class="optcard">
+            <span class="radiodot" aria-hidden="true"></span>
+            <span class="opticon">
+              <svg width="20" height="20" viewBox="0 0 16 16"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0ZM1.5 8a6.5 6.5 0 1 1 11.001 4.684A9.05 9.05 0 0 0 8 10.5a9.05 9.05 0 0 0-4.501 2.184A6.47 6.47 0 0 1 1.5 8Zm2.006 5.68A7.53 7.53 0 0 1 8 12c1.71 0 3.28.61 4.494 1.68a6.5 6.5 0 0 1-8.988 0ZM8 4a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Z"/></svg>
+            </span>
+            <span class="opttext">
+              <span class="optname">Insider</span>
+              <span class="optdesc">Student, alumnus, faculty or staff — go straight in.</span>
+            </span>
+          </span>
+        </label>
+
+        <div class="insider-panel" id="insiderPanel" hidden>
+          <label for="email">Enter your LNCT email</label>
+          <input type="email" id="email" name="email" autocomplete="email"
+                 placeholder="yourname@lnct.ac.in">
+          <p class="hint" id="emailHint">Press <kbd>Enter</kbd> to continue</p>
+        </div>
+
+        <label class="opt" for="visitor-outsider">
+          <input type="radio" name="visitor" id="visitor-outsider" value="outsider" required>
+          <span class="optcard">
+            <span class="radiodot" aria-hidden="true"></span>
+            <span class="opticon">
+              <svg width="20" height="20" viewBox="0 0 16 16"><path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-1.06 1.06ZM11.5 7a4.5 4.5 0 1 0-9 0 4.5 4.5 0 0 0 9 0Z"/></svg>
+            </span>
+            <span class="opttext">
+              <span class="optname">Outsider</span>
+              <span class="optdesc">Recruiter or anyone else — tell us what you need first.</span>
+            </span>
+          </span>
+        </label>
+
+        <div class="outsider-panel" id="outsiderPanel" hidden>
+          <label for="intent">What are you looking for?</label>
+          <div class="combobox">
+            <input type="text" id="intent" name="intent" autocomplete="off"
+                   role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="intentList"
+                   placeholder="Type or choose from the list">
+            <button type="button" class="combo-toggle" id="comboToggle" tabindex="-1" aria-label="Show options">
+              <svg width="14" height="14" viewBox="0 0 16 16"><path d="M4.427 6.427 8 10l3.573-3.573a.25.25 0 0 1 .354.354l-3.75 3.75a.25.25 0 0 1-.354 0l-3.75-3.75a.25.25 0 0 1 .354-.354Z" stroke="currentColor" stroke-width=".6"/></svg>
+            </button>
+            <ul class="combo-list" id="intentList" role="listbox" hidden></ul>
+          </div>
+          <p class="hint" id="intentHint">Pick an option, or type your own and press <kbd>Enter</kbd></p>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+
+  <p class="foot">LNCT Group of Colleges · Bhopal</p>
+</main>
+
+<script src="login.js"></script>
+</body>
+</html>

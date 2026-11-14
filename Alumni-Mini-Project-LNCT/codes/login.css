@@ -1,0 +1,151 @@
+/* Forced light mode — GitHub Primer light tokens, no dark variant */
+:root{
+  --canvas:#ffffff;
+  --canvas-inset:#f6f8fa;
+  --canvas-overlay:#ffffff;
+  --border:#d1d9e0;
+  --fg:#1f2328;
+  --fg-muted:#59636e;
+  --fg-subtle:#818b98;
+  --accent-fg:#0969da;
+  --accent-emphasis:#0969da;
+  --accent-subtle:#ddf4ff;
+  --success-fg:#1a7f37;
+  --danger-fg:#d1242f;
+  --danger-subtle:#fff1f0;
+  --hex-line:#1f232810;
+  --shadow-lg:0 12px 32px rgba(31,35,40,.10);
+  --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;background:var(--canvas);color:var(--fg);
+  font-family:var(--sans);font-size:14px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  display:flex;align-items:center;justify-content:center;
+  min-height:100vh;position:relative;overflow-x:hidden;
+}
+
+/* static honeycomb backdrop */
+.hexbg{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    radial-gradient(ellipse 70% 55% at 50% 0%, transparent, var(--canvas) 75%),
+    repeating-linear-gradient(120deg, var(--hex-line) 0 1.5px, transparent 1.5px 60px),
+    repeating-linear-gradient(60deg,  var(--hex-line) 0 1.5px, transparent 1.5px 60px),
+    repeating-linear-gradient(0deg,   var(--hex-line) 0 1.5px, transparent 1.5px 104px);
+  background-size:auto, 60px 104px, 60px 104px, 60px 104px;
+}
+
+.wrap{position:relative;z-index:1;width:100%;max-width:440px;padding:24px;
+  display:flex;flex-direction:column;align-items:center;gap:14px}
+
+.card{
+  width:100%;background:var(--canvas-overlay);border:1px solid var(--border);
+  border-radius:14px;box-shadow:var(--shadow-lg);
+  padding:32px 30px 28px;text-align:center;
+}
+
+.logo-box{
+  display:flex;align-items:center;justify-content:center;
+  width:96px;height:72px;margin:0 auto 14px;overflow:hidden;
+}
+.logo{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
+
+h1{margin:0 0 4px;font-size:21px;font-weight:600;letter-spacing:-.015em}
+.sub{margin:0 0 24px;color:var(--fg-muted);font-size:13.5px}
+
+fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+legend{padding:0}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+
+.opt{display:block;cursor:pointer;text-align:left}
+.opt input[type="radio"]{
+  position:absolute;opacity:0;width:1px;height:1px;
+}
+.optcard{
+  display:flex;align-items:center;gap:12px;
+  border:1.5px solid var(--border);border-radius:10px;
+  padding:13px 14px;transition:border-color .12s, background .12s, box-shadow .12s;
+  background:var(--canvas);
+}
+.opt:hover .optcard{border-color:var(--fg-subtle);background:var(--canvas-inset)}
+.opt input:focus-visible + .optcard{
+  outline:2px solid var(--accent-emphasis);outline-offset:2px;
+}
+.opt input:checked + .optcard{
+  border-color:var(--accent-emphasis);background:var(--accent-subtle);
+  box-shadow:0 0 0 1px var(--accent-emphasis) inset;
+}
+
+.radiodot{
+  flex:none;width:18px;height:18px;border-radius:50%;
+  border:1.5px solid var(--border);background:var(--canvas);
+  position:relative;transition:border-color .12s;
+}
+.opt input:checked + .optcard .radiodot{border-color:var(--accent-emphasis);border-width:5px}
+.opt:hover .radiodot{border-color:var(--fg-subtle)}
+.opt input:checked + .optcard .radiodot{border-color:var(--accent-emphasis)}
+
+.opticon{
+  flex:none;width:34px;height:34px;border-radius:8px;
+  display:grid;place-items:center;background:var(--canvas-inset);color:var(--fg-muted);
+}
+.opt input:checked + .optcard .opticon{background:var(--accent-emphasis);color:#fff}
+.opticon svg{fill:currentColor}
+
+.opttext{min-width:0}
+.optname{display:block;font-weight:600;font-size:14px}
+.optdesc{display:block;font-size:12px;color:var(--fg-muted);margin-top:1px;line-height:1.4}
+
+.insider-panel,.outsider-panel{
+  margin-top:14px;padding-top:14px;border-top:1px solid var(--border);
+  text-align:left;animation:reveal .15s ease-out;
+}
+@keyframes reveal{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.insider-panel label,.outsider-panel label{display:block;font-size:12.5px;font-weight:500;color:var(--fg-muted);margin-bottom:6px}
+.insider-panel input[type="email"],
+.outsider-panel input[type="text"]{
+  width:100%;height:38px;border:1px solid var(--border);border-radius:8px;
+  background:var(--canvas-inset);padding:0 38px 0 12px;font-family:inherit;font-size:14px;color:var(--fg);
+  outline:none;transition:border-color .12s, box-shadow .12s;
+}
+.insider-panel input[type="email"]{padding:0 12px}
+.insider-panel input[type="email"]:focus,
+.outsider-panel input[type="text"]:focus{
+  border-color:var(--accent-emphasis);background:var(--canvas);
+  box-shadow:0 0 0 3px color-mix(in srgb, var(--accent-emphasis) 20%, transparent);
+}
+
+/* autocomplete combobox */
+.combobox{position:relative}
+.combo-toggle{
+  position:absolute;right:6px;top:50%;transform:translateY(-50%);
+  width:26px;height:26px;border:0;background:none;border-radius:6px;
+  display:grid;place-items:center;color:var(--fg-muted);
+}
+.combo-toggle:hover{background:var(--canvas-inset)}
+.combo-list{
+  list-style:none;margin:4px 0 0;padding:4px;position:absolute;left:0;right:0;top:100%;z-index:10;
+  background:var(--canvas-overlay);border:1px solid var(--border);border-radius:8px;
+  box-shadow:var(--shadow-lg);max-height:220px;overflow-y:auto;
+}
+.combo-list li{padding:8px 10px;font-size:13px;border-radius:6px;cursor:pointer;line-height:1.35}
+.combo-list li:hover,.combo-list li.active{background:var(--accent-subtle);color:var(--accent-fg)}
+.hint{margin:7px 2px 0;font-size:12px;color:var(--fg-subtle)}
+.hint.warn{color:var(--danger-fg)}
+.hint kbd{
+  font-family:var(--mono);font-size:11px;border:1px solid var(--border);
+  border-radius:4px;padding:1px 5px;background:var(--canvas-inset);color:var(--fg-muted);
+}
+
+.foot{position:relative;z-index:1;margin:0;font-size:12px;color:var(--fg-subtle)}
+
+@media (max-width:420px){
+  .card{padding:26px 20px 22px}
+  .logo-box{width:80px;height:60px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}

@@ -1,0 +1,6 @@
+Flask>=3.0
+
+"First download and install Flask. You can do this using pip, which is the package installer for Python. Open your terminal or command prompt and run the following command:
+
+    pip install flask
+    python app.py
